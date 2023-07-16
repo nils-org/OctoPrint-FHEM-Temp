@@ -1,0 +1,60 @@
+<form class="form-horizontal">
+    <h4>General</h4>
+    <div class="control-group">
+        <label class="control-label">Server</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.fhem_temp.address" placeholder="http://localhost:8083">
+            <span class="help-block">The IP address or hostname of your FHEM server. e.g. http://ip:port or http://hostname:port. Do not include a trailing slash /</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Device Name</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.fhem_temp.device_name">
+            <span class="help-block">The device Name in FHEM.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Reading of desired temp</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.fhem_temp.desired_reading"  placeholder="state">
+            <span class="help-block">The reading of the desired temperature. This will be shown as 'target' in octoprint. Leave empty if the device has no target temperature.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Reading of maesured temp</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.fhem_temp.measured_reading"  placeholder="state">
+            <span class="help-block">The reading of the measured temperature. This will be shown as 'actual' in octoprint.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Name of temp</label>
+        <div class="controls">
+            <input type="text" class="input" data-bind="value: settings.plugins.fhem_temp.temp_name"  placeholder="state">
+            <span class="help-block">The name to report for the reading of the temperature in octoprint.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Update interval</label>
+        <div class="controls">
+            <input type="number" min="1" class="input-mini" data-bind="value: settings.plugins.fhem_temp.update_interval"  placeholder="state">
+            <span class="help-block">The interval in seconds in which to poll fhem.</span>
+        </div>
+    </div>
+    <!-- todo: authentication -->
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" data-bind="checked: settings.plugins.fhem_temp.verify_tls">
+                Verify TLS certificates
+            </label>
+            <!-- ko if: settings.plugins.fhem_temp.verify_tls -->
+            <span class="help-block">Verify TLS certificate and do not connect on certificate issues.</span>
+            <!-- /ko -->
+            <!-- ko ifnot: settings.plugins.fhem_temp.verify_tls -->
+            <span class="help-block">Do not verify TLS certificate.</span>
+            <!-- /ko -->
+        </div>
+    </div>
+</form>

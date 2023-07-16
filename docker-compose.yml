@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: dev.dockerfile
+    volumes:
+      - 'octoprint:/home/dev/.octoprint'
+      - '.:/home/dev/OctoPrint-FHEM-Temp'
+    working_dir: /home/dev/OctoPrint-FHEM-Temp
+    entrypoint: ["bash", "-c", "octoprint dev plugin:install && octoprint serve"]
+    ports:
+      - '127.0.0.1:8080:5000'
+    profiles:
+      - dev
+
+volumes:
+  octoprint:
